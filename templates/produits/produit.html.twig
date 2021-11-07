@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogue{% endblock %}
+
+{# {% block nav %}
+{% endblock %} #}
+
+{% block content %}
+
+    {# {% if app.user.valid == 0 %} 
+        {{ render('connexion') }}
+    {% else %} #}
+        <div class="container mt-5">
+            <a href="{{ path('produits') }}" class="btn btn-success btn-block"> Revenir au catalogue </a>
+            <div class="row mt-5">
+                <div class='col-12 col-lg-6'>
+                    <img src="/uploads/images/{{produit.image}}" alt="{{ produit.name }}" class="img-fluid text-center">
+                </div>
+                <div class='col-12 col-lg-6' >
+                    <div class="card" style="width: 35rem;">
+                        <div class="card-body">
+                            <h5 class="card-title"> {{produit.name}}</h5>
+                            <p class="card-text"> {{produit.description}}</p>                  
+                                <a {# href= "{{ path('add_to_cart', {'id' : produit.id }) }}"  #}
+                                class="btn btn-info"> ACHETER</a>
+                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+{% endblock %}

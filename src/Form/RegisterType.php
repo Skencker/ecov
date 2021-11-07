@@ -5,13 +5,12 @@ namespace App\Form;
 use App\Entity\Users;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
-use Symfony\Component\Form\FormTypeInterface;
 
 
 class RegisterType extends AbstractType
@@ -23,6 +22,12 @@ class RegisterType extends AbstractType
                 'label' => 'Votre email',
                 'attr' => [
                     'placeholder' => 'Merci de saisir votre adresse email'
+                ]
+            ])
+            ->add('name', TextType::class, [
+                'label' => 'Votre nom',
+                'attr' => [
+                    'placeholder' => 'Merci de saisir votre nom'
                 ]
             ])
             ->add('password', RepeatedType::class, [
@@ -43,6 +48,7 @@ class RegisterType extends AbstractType
                     ]
                 ]
             ])
+           
             ->add('submit', SubmitType::class, [
                 'label' => "S'inscrire"
             ])

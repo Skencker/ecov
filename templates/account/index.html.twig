@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte
+{% endblock %}
+
+{% block content %}
+
+	<div class="container">
+		<h1>Votre compte</h1>
+		Bienvenue
+		{{app.user.name | escape}}
+		dans votre compte
+		<hr>
+		<h3>
+			Mes coordonées
+		</h3>
+		<p>
+			Nom :
+			{{app.user.name}}</p>
+		<p>
+			Email :
+			{{app.user.email}}</p>
+
+		<h3>
+			Mettre un produit en vente :
+		</h3>
+            <a href="{{ path('add_product') }}">
+		    <button class="btn btn-sm btn-info text-light mt-3" type="submit" style="background:#5C636A">VENDRE</button>   
+            </a>
+		<h3>
+			Mes articles en ventes :
+		</h3>
+		
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Nom de l'article</th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for produit in produitUser %}
+
+					<tr>
+						<td>{{produit.name}}</td>
+						<td><button class="btn btn-sm btn-info text-light mt-3" type="submit" style="background:#5C636A">VOIR</button></td>
+						<td><button class="btn btn-sm btn-info text-light mt-3" type="submit" style="background:#5C636A">MODIFIER</button></td>
+                        <td> <button class="btn btn-sm btn-info text-light mt-3" type="submit" style="background:#5C636A"> SUPPRIMER</button></td>
+					</tr> 
+				</tbody>
+			</tbody>
+		</tr>
+	{% endfor %}
+</tbody></table></div>{% endblock %}

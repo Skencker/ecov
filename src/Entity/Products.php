@@ -54,6 +54,22 @@ class Products
      */
     private $deal;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug = '';
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $createAt;
+
+
+    public function __toString() 
+    {
+        return $this->getName();
+    }
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -139,6 +155,30 @@ class Products
     public function setDeal(?Deal $deal): self
     {
         $this->deal = $deal;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getCreateAt(): ?\DateTimeInterface
+    {
+        return $this->createAt;
+    }
+
+    public function setCreateAt(\DateTimeInterface $createAt): self
+    {
+        $this->createAt = $createAt;
 
         return $this;
     }

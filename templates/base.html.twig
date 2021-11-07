@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         {# Boostrap #}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -18,7 +18,7 @@
           
          <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a href="/" class="navbar-brand">EcoV
+                <a href="{{ path('home') }}" class="navbar-brand">EcoV
                     <span class="visually-hidden">(current)</span>
                 </a>   
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,13 +28,19 @@
                 <div class="collapse navbar-collapse" id="navbarColor03">
                     <ul class="navbar-nav mx-auto fw-bold ">
                         <li class="nav-item mx-4 border-bottom border-2 border-secondary">
-                            <a href="/produits" class="nav-link">Acheter</a>
+                            <a href="{{ path('produits') }}" class="nav-link">Acheter</a>
                         </li>
                         <li class="nav-item mx-4 border-bottom border-2 border-secondary">
-                            <a class="nav-link" onClick={toggleSignIn}>Connexion</a>
+                            <a href="{{ path('app_login') }}" class="nav-link">Connexion</a>
                         </li>
                         <li class="nav-item mx-4 border-bottom border-2 border-secondary">
-                            <a class="nav-link" onClick={toggleSignUp}>Inscription</a>
+                            <a href="{{ path('register') }}" class="nav-link">Inscription</a>
+                        </li>
+                        <li class="nav-item mx-4 border-bottom border-2 border-secondary">
+                            <a href="{{ path('account') }}" class="nav-link">Compte</a>
+                        </li>
+                        <li class="nav-item mx-4 border-bottom border-2 border-secondary">
+                            <a href="{{ path('admin') }}" class="nav-link">Admin</a>
                         </li>
                     </ul>
                 </div>

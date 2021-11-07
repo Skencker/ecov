@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout article{% endblock %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+{% block content %}
+
+
+<div class="container">
+    <h2> Ajouter un article </h2>
+  {{ form_start(form) }}
+      {{ form_row(form.name, {'attr' : {'placeholder': "Nom de l'article"}}) }}
+      {{ form_row(form.description, {'attr' : {'placeholder': "Description de l'article"}})}}
+      {{ form_row(form.price, {'attr' : {'placeholder': "Prix de l'article"}}) }}
+      {{ form_row(form.image,{'attr' : {'placeholder': "Image de l'article"}}) }}
+      {{ form_row(form.category)}}
+      {{ form_row(form.deal) }}
+  {{ form_end(form) }}
+   
+</div>
+{% endblock %}
