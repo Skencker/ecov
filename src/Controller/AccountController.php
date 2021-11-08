@@ -22,7 +22,7 @@ class AccountController extends AbstractController
     
     public function index(): Response
     {
-        $idUser = $this->getUser()->getId();
+        $idUser = $this->getUser();
         // rechercher les articles avec la propriété user = 1
         $produitUser = $this->entityManager->getRepository(Products::class)->findUser($idUser);
         // dd($produitUser);

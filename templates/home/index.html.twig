@@ -4,6 +4,22 @@
 
 {% block content %}
     <div class="container">
-        HELLO
+        <div class="row">
+
+            <div class="col-6  my-auto fs-5">
+                <p>
+                    Envi de faire un geste pour la planéte ? <br>
+                    De trouver votre bonheur au coin de la rue ? <br>
+                    De vider vos placards trop plein ? <br><br>
+                    Vous êtes au bon endroit... <br>
+                    Vendez, donnez ou achetez entre voisins de Saint Pierre de lages ! <br>
+                </p>
+                <a href="{{ path('produits') }}" class="nav-link text-center "><button type="btn" class="btn btn-lg text-light text-uppercase" style="background:#5C636A">Voir les articles en vente</button></a>
+            </div>
+
+            <div class="col-6 text-center">
+                 <img class="img img-fluid ps-3" src="{{ asset('assets/images/ecov-logo.png')}}" alt="logo" >
+            </div>
+        </div>
     </div>
 {% endblock %}

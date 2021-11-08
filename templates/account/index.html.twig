@@ -5,52 +5,44 @@
 
 {% block content %}
 
-	<div class="container">
-		<h1>Votre compte</h1>
-		Bienvenue
-		{{app.user.name | escape}}
-		dans votre compte
-		<hr>
-		<h3>
-			Mes coordonées
-		</h3>
-		<p>
-			Nom :
-			{{app.user.name}}</p>
-		<p>
-			Email :
-			{{app.user.email}}</p>
+	<div class="container mb-5">
+		<h1 class="mb-5">Bienvenue {{app.user.name}} dans votre compte</h1>
+		<div class="row">
+			<div class="col-4">
+				<h3>Mes coordonées</h3>
+				<p>	Nom :	{{app.user.name}}</p>
+				<p>	Email : {{app.user.email}}</p>
+				<h3>Mettre un produit en vente :</h3>
+				<a href="{{ path('add_product') }}">
+					<button class="btn btn-sm btn-info text-light mt-3" type="submit" style="background:#5C636A">VENDRE</button>   
+				</a>
+			</div>
+			<div class="col-8">
+				<h3>Mes articles en ventes :</h3>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col"></th>
+							<th scope="col"></th>
+							<th scope="col"></th>
+							<th scope="col"></th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for produit in produitUser %}
 
-		<h3>
-			Mettre un produit en vente :
-		</h3>
-            <a href="{{ path('add_product') }}">
-		    <button class="btn btn-sm btn-info text-light mt-3" type="submit" style="background:#5C636A">VENDRE</button>   
-            </a>
-		<h3>
-			Mes articles en ventes :
-		</h3>
-		
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">Nom de l'article</th>
-					<th scope="col"></th>
-					<th scope="col"></th>
-					<th scope="col"></th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for produit in produitUser %}
-
-					<tr>
-						<td>{{produit.name}}</td>
-						<td><button class="btn btn-sm btn-info text-light mt-3" type="submit" style="background:#5C636A">VOIR</button></td>
-						<td><button class="btn btn-sm btn-info text-light mt-3" type="submit" style="background:#5C636A">MODIFIER</button></td>
-                        <td> <button class="btn btn-sm btn-info text-light mt-3" type="submit" style="background:#5C636A"> SUPPRIMER</button></td>
-					</tr> 
-				</tbody>
-			</tbody>
-		</tr>
-	{% endfor %}
-</tbody></table></div>{% endblock %}
+							<tr>
+								<td>{{produit.name}}</td>
+								<td><img src="/uploads/images/{{produit.image}}" alt="{{produit.name}}" class="img-fluid w-25 "></td>
+								<td><a href="{{ path('produit', {'slug': produit.slug}) }}"><button class="btn btn-sm btn-success text-light mt-3" type="submit" style="background:#5C636A">VOIR</button></a></td>
+								<td><a href="{{ path('edit_product', {'id': produit.id}) }}"><button class="btn btn-sm btn-info text-light mt-3" type="submit" style="background:#5C636A">MODIFIER</button></a></td>
+								<td><a href="{{ path('delete_product', {'id': produit.id}) }}" onclick="return confirm('Voulez-vous vraiment surppimer cet article')"><button class="btn btn-sm btn-danger text-light mt-3" type="submit" style="background:#5C636A">SUPPRIMER</button></a></td>4
+							</tr> 
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}

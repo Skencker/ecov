@@ -4,6 +4,9 @@ namespace App\Entity;
 
 use App\Repository\ProductsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\Length;
 
 /**
  * @ORM\Entity(repositoryClass=ProductsRepository::class)
@@ -18,16 +21,28 @@ class Products
     private $id;
 
     /**
+     * @Assert\Length(
+        * min = 2, 
+        * max = 20,
+        * minMessage = "Le nom doit avoir au moins {{ limit }} caractères",
+        * maxMessage = "Le nom doit être moins long que {{ limit }} caractères")
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Assert\Length(
+        * max = 500,
+        * maxMessage = "La description doit être moins long que {{ limit }} caractères")
      * @ORM\Column(type="text")
      */
     private $description;
 
     /**
+     * @Assert\Range(
+        * min = 0, 
+        * max = 20,
+        * maxMessage = "Le prix doit être inféreieur à {{ limit }} caractères")
      * @ORM\Column(type="float", nullable=true)
      */
     private $price;
@@ -55,9 +70,10 @@ class Products
     private $deal;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(type="string", length=255, unique=true)
      */
-    private $slug = '';
+    private $slug;
 
     /**
      * @ORM\Column(type="date")

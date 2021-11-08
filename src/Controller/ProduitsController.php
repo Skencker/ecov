@@ -24,19 +24,19 @@ class ProduitsController extends AbstractController
     {
         $produits = $this ->entityManager->getRepository(Products::class)->findAll();
 
-        // $search = new Search();
-        // $form = $this->createForm(SearchType::class, $search);
+        $search = new Search();
+        $form = $this->createForm(SearchType::class, $search);
         
-        // $form->handleRequest($request); 
+        $form->handleRequest($request); 
 
-        // if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             
-        //     $books = $this->entityManager->getRepository(Books::class)->findWithSearch($search);
-        // }
+            $produits = $this->entityManager->getRepository(Products::class)->findWithSearch($search);
+        }
 
         return $this->render('produits/index.html.twig', [
             'produits' => $produits,
-            // 'form' => $form->createView()
+            'form' => $form->createView()
         ]);
     }
 

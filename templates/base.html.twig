@@ -13,20 +13,21 @@
             content="Site EcoV trouver votre bonheur et vider vos placards"
         />
     </head>
-    <body>
+    <body style="background:#f4f3ea">
         {# Navbar #}
           
-         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a href="{{ path('home') }}" class="navbar-brand">EcoV
+         <nav class="navbar navbar-expand-lg navbar-light" style="background:#f4f3ea">
+            <div class="container">
+                <a href="{{ path('home') }}" class="navbar-brand">
                     <span class="visually-hidden">(current)</span>
+                    <img class="img img-fluid w-25 ps-3" src="{{ asset('assets/images/ecov-logo.png')}}" alt="logo" >
                 </a>   
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarColor03">
-                    <ul class="navbar-nav mx-auto fw-bold ">
+                    <ul class="navbar-nav  fw-bold ">
                         <li class="nav-item mx-4 border-bottom border-2 border-secondary">
                             <a href="{{ path('produits') }}" class="nav-link">Acheter</a>
                         </li>
@@ -47,6 +48,12 @@
             </div>
         </nav>
         {% block content %}{% endblock %}
+        <footer class=" fixed-bottom text-center"style="background:#f4f3ea">
+            <div class="text-center"> EcoV Tout droit reservé </div> 
+            <a>Mentions légales</a>
+            <br />
+            <a href = 'mailto: sandrinekencker@hotmail.com' >contact@ecov.com</a>
+        </footer>
     </body>
     {# Boostrap #}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

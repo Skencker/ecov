@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Classe\Search;
 use App\Entity\Products;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -27,6 +28,33 @@ class ProductsRepository extends ServiceEntityRepository
         ->getQuery()
         ->getResult()
     ;
+    }
+    public function findWithSearch (Search $search) {
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('p','d', 'c')
+            ->join('p.deal', 'd' )
+            ->join('p.category', 'c');
+
+        if (!empty($search->genres)) {
+            $query = $query
+            ->andWhere('d.id IN (:deal)')
+            ->setParameter('deal', $search->deal);
+        }
+
+        if (!empty($search->categories)) {
+            $query = $query
+            ->andWhere('c.id IN (:categories)')
+            ->setParameter('categories', $search->categories);
+        }
+
+        if (!empty($search->string)) {
+            $query = $query
+                ->andWhere('p.name LIKE :string')
+                ->setParameter('string', "%{$search->string}%"); // recherche partielle   
+        }
+
+        return $query->getQuery()->getResult();
     }
 
 

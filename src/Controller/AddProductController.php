@@ -20,9 +20,14 @@ class AddProductController extends AbstractController
     }
 
     #[Route('/compte/ajout/produit', name: 'add_product')]
-    public function index(Request $request): Response
+    #[Route('/compte/edit/produit/{id}', name: 'edit_product')]
+
+    public function index(Products $product = null, Request $request): Response
     {
-        $product = new Products;
+
+        if(!$product) {
+            $product = new Products;
+        }
         $form = $this->createForm(ProductType::class, $product);
 
         $form->handleRequest(($request));
@@ -30,16 +35,30 @@ class AddProductController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()) {
             $product = $form->getData();
-            $product ->setCreateAt(new \dateTime());
-            $product ->setUser($this->getUser()->getId());
-            $product ->setSlug();
+
+            if(!$product->getId()) {
+                $product ->setCreateAt(new \dateTime());
+            }
+            $product ->setUser($this->getUser());
 
             $this->entityManager->persist($product);
             $this->entityManager->flush();
+            
+            return $this->redirectToRoute(('account'));
         }
-
+        
         return $this->render('account/addProduct.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'editMode' => $product->getId() !== null
         ]);
+    }
+    
+    
+    #[Route('/compte/produit/{id}/supprimer', name: 'delete_product')]
+    public function delete(Products $product) {
+        $this->entityManager->remove($product);
+        $this->entityManager->flush();
+        return $this->redirectToRoute('account');
+        
     }
 }
