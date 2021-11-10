@@ -8,6 +8,7 @@ use App\Form\SearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -22,7 +23,7 @@ class ProduitsController extends AbstractController
     #[Route('/catalogue', name: 'produits')]
     public function index(Request $request): Response
     {
-        $produits = $this ->entityManager->getRepository(Products::class)->findAll();
+        $produits = $this ->entityManager->getRepository(Products::class)->findBy(array(),array('createAt' => 'DESC'));
 
         $search = new Search();
         $form = $this->createForm(SearchType::class, $search);

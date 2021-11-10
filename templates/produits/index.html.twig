@@ -20,8 +20,6 @@
                             <div class="row">
                                 <div class="">
                                     {{ form_row(form.categories) }}
-                                {# </div>
-                                <div class="col-6" id="some-custom-id"> #}
                                     {{ form_row(form.deal) }}
                                 </div>
                             </div>
@@ -40,10 +38,16 @@
                                         </div>
                                         <div class="card-body">
                                             <h5 class="card-title my-2">{{produit.name}}</h5>
-                                            <p class="card-text"> Proposé par : {{produit.user}}</p>
-                                            <p class="">Publié le : {{produit.createAt|date("d/m/Y")}}</p>
+                                            {% if produit.deal == 'Don'%}
+                                            <p class="card-text"> Donné par : {{produit.user}}</p>
+                                            {% endif %}
+                                            {% if  produit.deal == 'Vente'%}
+                                            <p class="card-text"> Vendu par : {{produit.user}}  Prix : {{produit.price}} €</p>
+                                            <p class="card-text"></p>
+                                            {% endif %}
+                                            <p class='text-'>Publié le : {{produit.createAt|date("d/m/Y")}}</p>
                                             <div class='d-flex justify-content-around '>
-                                                <a href="{{ path('produit', {'slug': produit.slug}) }}" class="btn btn-secondary btn-sm align-self-center">VOIR</a>                                    
+                                                <a href="{{ path('produit', {'slug': produit.slug}) }}" class="btn btn-secondary btn-sm w-100 align-self-center">VOIR</a>                                    
                                             </div>
                                         </div>
                                     </div>

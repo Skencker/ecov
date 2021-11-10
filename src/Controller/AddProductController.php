@@ -36,11 +36,20 @@ class AddProductController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
             $product = $form->getData();
 
+            $image = $form->get('image')->getData();
+            $ext = $image->guessExtension();
+            $imageName = md5(uniqid()).'.' . $ext;
+            $image->move(
+                $this->getParameter('images_directory'),
+                $imageName
+            );
+            $product->setImage($imageName);
+            
             if(!$product->getId()) {
                 $product ->setCreateAt(new \dateTime());
             }
             $product ->setUser($this->getUser());
-
+            
             $this->entityManager->persist($product);
             $this->entityManager->flush();
             
@@ -56,6 +65,7 @@ class AddProductController extends AbstractController
     
     #[Route('/compte/produit/{id}/supprimer', name: 'delete_product')]
     public function delete(Products $product) {
+        // dd($product);
         $this->entityManager->remove($product);
         $this->entityManager->flush();
         return $this->redirectToRoute('account');
