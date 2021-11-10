@@ -39,8 +39,9 @@
                                             <img src="/uploads/images/{{produit.image}}" alt="{{produit.name}}" class="img-fluid  px-5 mx-auto pt-3 " style="heigth:100px width: 100px">
                                         </div>
                                         <div class="card-body">
-                                            <h5 class="card-title ">{{produit.name}}</h5>
-                                            <p class="card-text">{{produit.category}}</p>
+                                            <h5 class="card-title my-2">{{produit.name}}</h5>
+                                            <p class="card-text"> Proposé par : {{produit.user}}</p>
+                                            <p class="">Publié le : {{produit.createAt|date("d/m/Y")}}</p>
                                             <div class='d-flex justify-content-around '>
                                                 <a href="{{ path('produit', {'slug': produit.slug}) }}" class="btn btn-secondary btn-sm align-self-center">VOIR</a>                                    
                                             </div>

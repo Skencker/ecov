@@ -19,7 +19,7 @@ class ProductType extends AbstractType
             ->add('name', TextType::class)
             ->add('description')
             ->add('price', MoneyType::class)
-            ->add('image')
+            ->add('image', FileType::class)
             ->add('category')
             ->add('deal')
             ->add('slug', HiddenType::class)
