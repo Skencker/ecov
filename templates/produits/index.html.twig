@@ -9,10 +9,10 @@
         {{ render('connexion') }}
     {% else %} #}
         <div class="container mb-5">
-            <div class='row mt-5 d-flex  justify-content-center'>
-               <div class="col-sm-12 col-md-5 col-lg-2 bg-light box">
+            <div class='row mt-5 d-flex  justify-content-center m-2'>
+               <div class="col-sm-12 col-md-5 col-lg-2 bg-light box p-3">
                     <div class='row'>
-                        <h4> Filtrer... </h4>
+                        <h4 class="fw-bold"> Filtrer... </h4>
                         {{ form_start(form) }}
                             <div class="row">
                                 {{ form_row(form.string) }}
@@ -28,26 +28,53 @@
                     </div> 
                 </div>
                 <div class="col-sm-12 col-md-7 col-lg-10">
-                    <div class="row d-flex  justify-content-center">
+
                         {% for produit in produits %}
                             <div class="col-12 col-lg-4">
-                                <div>
-                                    <div id="card" class="box-card box card my-4 p-2  d-flex justify-content-center" style="height:22rem width:18rem" >
-                                        <div style=" height: 20vh; width: 100wh;">
-                                            <img src="/uploads/images/{{produit.image}}" alt="{{produit.name}}" class="img-fluid  px-5 mx-auto pt-3 " style="heigth:100px width: 100px">
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title my-2">{{produit.name}}</h5>
-                                            {% if produit.deal == 'Don'%}
-                                            <p class="card-text"> Donné par : {{produit.user}}</p>
-                                            {% else %}
-                                            <p class="card-text"> Vendu par : {{produit.user}} | Prix : {{produit.price}} €</p>
-                                            <p class="card-text"></p>
-                                            {% endif %}
-                                            <p class='text-'>Publié le : {{produit.createAt|date("d/m/Y")}}</p>
-                                            <div class='d-flex justify-content-around '>
-                                                <a href="{{ path('produit', {'slug': produit.slug}) }}" class="btn btn-sm w-100 align-self-center text-light fw-bold" style="background:#7AB7AB">VOIR</a>                                    
-                                            </div>
+                                <div class="product">
+                                    <div class="effect-1"></div>
+                                    <div class="effect-2"></div>
+                                    <div class="content d-flex"> 
+                                        <div class="row ">
+                                            <a href="{{ path('produit', {'slug': produit.slug}) }}" class="text-dark text-decoration-none">
+                                                <div class="card box-card box d-flex justify-content-center" style="width: 18rem;">
+                                                    <img src="/uploads/images/{{produit.image}}" class="card-img-top" alt="{{produit.name}}">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">{{produit.name}}</h5>
+                                                        {% if produit.deal == 'Don'%}
+                                                            <p class="card-text"> Donné par : {{produit.user}}</p>
+                                                            {% else %}
+                                                            <p class="card-text"> Vendu par : {{produit.user}} | Prix : {{produit.price}} €</p>
+                                                        {% endif %}
+                                                        <p class='text-'>Publié le : {{produit.createAt|date("d/m/Y")}}</p>
+                                                    <a href="{{ path('produit', {'slug': produit.slug}) }}" class="btn btn-sm w-100 align-self-center text-light fw-bold " style="background:#7AB7AB">VOIR</a>  
+                                                    </div>
+                                                </div>
+                                             </a>
+                                             
+
+
+
+                                            {# <div id="card" class="box-card box card my-4 p-2 bg-light d-flex justify-content-center" style="height:22rem width:18rem" >
+                                        <a href="{{ path('produit', {'slug': produit.slug}) }}" class="text-dark text-decoration-none">
+                                                <div style=" height: 20vh; width: 100wh;">
+                                                    <img src="/uploads/images/{{produit.image}}" alt="{{produit.name}}" class="card-img-top  px-5 mx-auto pt-3 " style="heigth:100px width: 100px">
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title my-2">{{produit.name}}</h5>
+                                                    {% if produit.deal == 'Don'%}
+                                                    <p class="card-text"> Donné par : {{produit.user}}</p>
+                                                    {% else %}
+                                                    <p class="card-text"> Vendu par : {{produit.user}} | Prix : {{produit.price}} €</p>
+                                                    <p class="card-text"></p>
+                                                    {% endif %}
+                                                    <p class='text-'>Publié le : {{produit.createAt|date("d/m/Y")}}</p>
+                                                    <div class='d-flex justify-content-around hover-zoom'>
+                                                        <a href="{{ path('produit', {'slug': produit.slug}) }}" class="btn btn-sm w-100 align-self-center text-light fw-bold " style="background:#7AB7AB">VOIR</a>                                    
+                                                    </div>
+                                                </div>
+                                        </a>
+                                            </div> #}
                                         </div>
                                     </div>
                                 </div>

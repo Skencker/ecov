@@ -22,14 +22,6 @@
              -20px -20px 60px #F4F3EA;
     
   }
-
-  .box-card:hover {
-    margin-left: 10px;
-    margin-right: -10px;
-    transition: 0.5s;
-  }
-
- 
       
 .btn-grad {background-image: linear-gradient(to right, #A286D1 0%, #D5D594 51%, #7AB7AB  100%)}
 .btn-grad {
@@ -52,11 +44,79 @@
     text-decoration: none;
 }
 
-
-.block-accueil {
-  position:absolute;
-  left:700px;
-  top: 250px;
+.accueil-bg {
+  background-image: url("../images/bg.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 100vh;
 }
-    
+
+.product {
+  flex: auto;
+  position: relative;
+}
+
+.product:before {
+  content: "";
+  float: left;
+  padding-top: 100%;
+}
+
+.product:hover .effect-1,
+.product:hover .effect-2 {
+  display: block;
+}
+
+.effect-1,
+.effect-2 {
+  margin-left: -30px;
+  margin-top: -40px;
+  border-radius: 5%;
+  display: none;
+  mix-blend-mode: multiply;
+  height: 110%;
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+.effect-1 {
+  animation: rotate 1.8s linear infinite;
+  background: #7AB7AB;
+}
+
+.effect-2 {
+  animation: rotate 1.2s linear reverse infinite;
+  background: #CF9A6E;
+}
+
+@keyframes rotate {
+  0% {
+    top: 0;
+    left: 8%;
+  }
+  25% {
+    top: 8%;
+    left: 0%;
+  }
+  50% {
+    top: 16%;
+    left: 8%;
+  }
+  75% {
+    top: 8%;
+    left: 16%;
+  }
+  100% {
+    top: 0;
+    left: 8%;
+  }
+}
+
+.card:hover {
+  transform:scale(1.07);
+  transition: 1s;
+}
 
