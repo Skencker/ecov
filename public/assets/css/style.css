@@ -1,0 +1,60 @@
+:root {
+    --blue : #7AB7AB;
+    --violet : #A286D1;
+    --orange : #CF9A6E;
+    --blanc : #F4F3EA;
+    --beige : #D5D594;
+    --noir : #342D21;
+
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .box {
+    border-radius: 10px;
+    background: #F4F3EA;
+    box-shadow:  20px 20px 60px #bebebe,
+             -20px -20px 60px #F4F3EA;
+    
+  }
+
+  .box:hover {
+    
+  }
+
+ 
+      
+.btn-grad {background-image: linear-gradient(to right, #A286D1 0%, #D5D594 51%, #7AB7AB  100%)}
+.btn-grad {
+    /* margin: 5px; */
+    /* padding: 15px 45px; */
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 5px;
+    display: block;
+}
+
+.btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.block-accueil {
+  position:absolute;
+  left:700px;
+  top: 250px;
+}
+    
+

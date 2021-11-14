@@ -41,12 +41,12 @@ class MessageType extends AbstractType
                     'placeholder' => 'Entrer votre message'
                 ]
             ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'Envoyer', 
-                'attr' => [
-                    'class' => 'btn btn-success'
-                ]
-            ]) 
+            // ->add('submit', SubmitType::class, [
+            //     'label' => 'Envoyer', 
+            //     'attr' => [
+            //         'class' => 'btn btn-success'
+            //     ]
+            // ]) 
             ->add('idPoduct', HiddenType::class)
        
         ;

@@ -8,7 +8,6 @@ use App\Form\SearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -30,12 +29,10 @@ class ProduitsController extends AbstractController
         
         $form->handleRequest($request); 
         
-
         if ($form->isSubmitted() && $form->isValid()) {
-            
             $produits = $this->entityManager->getRepository(Products::class)->findWithSearch($search);
         }
-
+        
         return $this->render('produits/index.html.twig', [
             'produits' => $produits,
             'form' => $form->createView()

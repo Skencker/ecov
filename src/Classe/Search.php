@@ -12,11 +12,11 @@ class Search
      */
     public $string = "";
     /**
-     * @var Categories[]
-     */
-    public $categories = [];
-    /**
      * @var Deal[]
      */
     public $deal = [];
+    /**
+     * @var Categories[]
+     */
+    public $categories = [];
 }

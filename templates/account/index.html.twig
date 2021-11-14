@@ -8,17 +8,17 @@
 	<div class="container mb-5">
 		<h1 class="mb-5">Bienvenue {{app.user.name}} dans votre compte</h1>
 		<div class="row">
-			<div class="col-12 col-lg-4">
+			<div class="col-12 col-lg-4 bg-light border">
 				<h3>Mes coordonées</h3>
 				<p>	Nom :	{{app.user.name}}</p>
 				<p>	Email : {{app.user.email}}</p>
 				<h3>Mettre un produit en vente :</h3>
 					<a href="{{ path('add_product') }}">
-						<button class="btn btn-sm btn-info text-light mt-3" type="submit" style="background:#5C636A">VENDRE</button>   
+						<button class="btn btn-sm btn-info text-light mt-3" type="submit">VENDRE</button>   
 					</a>
 			</div>
 			<div class="col-12 col-lg-8">
-				<h3>Mes articles en ventes :</h3>
+				<h3>Mes annonces :</h3>
 				<table class="table">
 					<thead>
 						<tr>
@@ -31,13 +31,31 @@
 					</thead>
 					<tbody>
 						{% for produit in produitUser %}
-
 							<tr>
 								<td>{{produit.name}}</td>
 								<td><img src="/uploads/images/{{produit.image}}" alt="{{produit.name}}" class="img-fluid w-25 "></td>
-								<td><a href="{{ path('produit', {'slug': produit.slug}) }}"><button class="btn btn-sm btn-success text-light mt-3" type="submit" style="background:#5C636A"><i class="bi bi-eye"></i></button></a></td>
-								<td><a href="{{ path('edit_product', {'id': produit.id}) }}"><button class="btn btn-sm btn-info text-light mt-3" type="submit" style="background:#5C636A"><i class="bi bi-eraser"></i></button></a></td>
-								<td><a href="{{ path('delete_product', {'id': produit.id}) }}" onclick="return confirm('Voulez-vous vraiment surppimer cet article')"><button class="btn btn-sm btn-danger text-light mt-3" type="submit" style="background:#5C636A"><i class="bi bi-archive"></i></button></a></td>4
+								<td><a href="{{ path('produit', {'slug': produit.slug}) }}"><button class="btn btn-success" type="submit" ><i class="bi bi-eye"></i></button></a></td>
+								<td><a href="{{ path('edit_product', {'id': produit.id}) }}"><button class="btn btn-info " type="submit"><i class="bi bi-eraser"></i></button></a></td>
+								<td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-archive"></i></button></td>
+
+								<!-- Modal -->
+								<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">Confirmation de suppression</h5>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											Voulez vous vraiment supprimer cet article ?
+										</div>
+										<div class="modal-footer">
+											<a href="{{ path('account')}}"><button type="button" class="btn btn-primary">RETOUR</button></a>
+											<a href="{{ path('delete_product', {'id': produit.id}) }}"><button type="submit" class="btn btn-danger">SUPPRIMER</button></a>
+										</div>
+										</div>
+									</div>
+								</div>
 							</tr> 
 						{% endfor %}
 					</tbody>

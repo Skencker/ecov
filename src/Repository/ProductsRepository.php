@@ -36,7 +36,7 @@ class ProductsRepository extends ServiceEntityRepository
             ->join('p.deal', 'd' )
             ->join('p.category', 'c');
 
-        if (!empty($search->genres)) {
+        if (!empty($search->deal)) {
             $query = $query
             ->andWhere('d.id IN (:deal)')
             ->setParameter('deal', $search->deal);

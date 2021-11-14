@@ -25,13 +25,6 @@ class SearchType extends AbstractType
                 'placeholder' => 'Votre recherche...',
                 'class'=> 'form-control-sm'
             ]
-        ])
-            ->add('categories', EntityType::class, [
-                'label' => 'Filtrer par catégories',
-                'required' => false ,
-                'class' => Categories::class,
-                'multiple' => true,
-                'expanded' => true
             ])
             
             ->add('deal', EntityType::class, [
@@ -42,12 +35,18 @@ class SearchType extends AbstractType
                 'expanded' => true,
            
             ])
+            ->add('categories', EntityType::class, [
+                'label' => 'Filtrer par catégories',
+                'required' => false ,
+                'class' => Categories::class,
+                'multiple' => true,
+                'expanded' => true
+            ])
 
             ->add('submit', SubmitType::class, [
-                'label' => "Recherche",
+                'label' => "Filtrer",
                 'attr' => [
-                    'class'=> 'btn-block btn-info text-light btn-sm',
-                    'style' => 'background:#5C636A'
+                    'class'=> 'text-light btn-grad w-100',
                 ]
             ])
             ;
