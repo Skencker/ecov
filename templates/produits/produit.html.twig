@@ -20,9 +20,23 @@
                     <div class="card" style="width: 35rem;">
                         <div class="card-body">
                             <h5 class="card-title"> {{produit.name}}</h5>
-                            <p class="card-text"> {{produit.description}}</p>                  
-                                <a {# href= "{{ path('add_to_cart', {'id' : produit.id }) }}"  #}
+                                {% if produit.deal == 'Don'%}
+                                    <p class="text"> Donné par : {{produit.user}}</p>
+                                {% else %}
+                                    <p class="text"> Vendu par : {{produit.user}} | Prix : {{produit.price}} €</p>
+                                    <p class="text"></p>
+                                {% endif %}             
+                            <p class='text-'>Publié le : {{produit.createAt|date("d/m/Y")}}</p>       
+                            <p class="card-text"> {{produit.description}}</p>   
+                                {% if is_granted('ROLE_USER') %}               
+                                <a href= "{{ path('message_buy', {'id' : produit.id }) }}"  
                                 class="btn btn-info"> ACHETER</a>
+                                {% else %}
+                                <p> Pour contacter le vendeur veuillez vous connecter : 
+                                <a href= "{{ path('app_login', {'id' : produit.id }) }}"  
+                                class=""> Se connecter</a> </p>
+
+                                {% endif %}               
                 
                         </div>
                     </div>

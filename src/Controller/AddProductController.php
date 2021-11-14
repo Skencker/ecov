@@ -65,7 +65,6 @@ class AddProductController extends AbstractController
     
     #[Route('/compte/produit/{id}/supprimer', name: 'delete_product')]
     public function delete(Products $product) {
-        // dd($product);
         $this->entityManager->remove($product);
         $this->entityManager->flush();
         return $this->redirectToRoute('account');
