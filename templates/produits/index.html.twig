@@ -10,7 +10,7 @@
     {% else %} #}
         <div class="container mb-5">
             <div class='row mt-5 d-flex  justify-content-center'>
-               <div class="col-sm-12 col-md-5 col-lg-2 bg-light">
+               <div class="col-sm-12 col-md-5 col-lg-2 bg-light box">
                     <div class='row'>
                         <h4> Filtrer... </h4>
                         {{ form_start(form) }}
@@ -32,7 +32,7 @@
                         {% for produit in produits %}
                             <div class="col-12 col-lg-4">
                                 <div>
-                                    <div id="card" class=" card box  d-flex justify-content-center" style="height:22rem width:18rem" >
+                                    <div id="card" class="box-card box card my-4 p-2  d-flex justify-content-center" style="height:22rem width:18rem" >
                                         <div style=" height: 20vh; width: 100wh;">
                                             <img src="/uploads/images/{{produit.image}}" alt="{{produit.name}}" class="img-fluid  px-5 mx-auto pt-3 " style="heigth:100px width: 100px">
                                         </div>
@@ -46,7 +46,7 @@
                                             {% endif %}
                                             <p class='text-'>Publié le : {{produit.createAt|date("d/m/Y")}}</p>
                                             <div class='d-flex justify-content-around '>
-                                                <a href="{{ path('produit', {'slug': produit.slug}) }}" class="btn btn-secondary btn-sm w-100 align-self-center">VOIR</a>                                    
+                                                <a href="{{ path('produit', {'slug': produit.slug}) }}" class="btn btn-sm w-100 align-self-center text-light fw-bold" style="background:#7AB7AB">VOIR</a>                                    
                                             </div>
                                         </div>
                                     </div>

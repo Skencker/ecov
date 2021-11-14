@@ -28,7 +28,7 @@ class SearchType extends AbstractType
             ])
             
             ->add('deal', EntityType::class, [
-                'label' => 'Filtrer par type de vente',
+                'label' => 'Type de vente',
                 'required' => false ,
                 'class' => Deal::class,
                 'multiple' => true,
@@ -36,7 +36,7 @@ class SearchType extends AbstractType
            
             ])
             ->add('categories', EntityType::class, [
-                'label' => 'Filtrer par catégories',
+                'label' => 'Catégories',
                 'required' => false ,
                 'class' => Categories::class,
                 'multiple' => true,
@@ -46,7 +46,7 @@ class SearchType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => "Filtrer",
                 'attr' => [
-                    'class'=> 'text-light btn-grad w-100',
+                    'class'=> 'text-light btn-grad w-100 fw-bold',
                 ]
             ])
             ;

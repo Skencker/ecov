@@ -23,8 +23,10 @@
     
   }
 
-  .box:hover {
-    
+  .box-card:hover {
+    margin-left: 10px;
+    margin-right: -10px;
+    transition: 0.5s;
   }
 
  
