@@ -8,12 +8,12 @@
 <div class="container">
     <h2> Ajouter un article </h2>
   {{ form_start(form) }}
-      {{ form_row(form.name, {'attr' : {'placeholder': "Nom de l'article"}}) }}
-      {{ form_row(form.description, {'attr' : {'placeholder': "Description de l'article"}})}}
-      {{ form_row(form.price, {'attr': {'required' : false}}) }}
+      {{ form_row(form.name, {'attr' : {'placeholder': "Nom de l'article"}, 'label' : "Nom" }) }}
+      {{ form_row(form.description, {'attr' : {'placeholder': "Description de l'article"}, 'label' : "Description"  })}}
+      {{ form_row(form.price, {'attr': {'required' : false}, 'label' : "Prix" }) }}
       {{ form_row(form.image,{'attr' : {'placeholder': "Image de l'article"}}) }}
-      {{ form_row(form.category)}}
-      {{ form_row(form.deal) }}
+      {{ form_row(form.category, {'label' : "Catégorie"  })}}
+      {{ form_row(form.deal, {'label' : "Type de vente"  }) }}
 
       <button type = "submit" class="btn btn-success">
         {% if editMode %}
