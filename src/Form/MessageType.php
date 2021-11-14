@@ -17,11 +17,36 @@ class MessageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('firstname', TextType::class)
-            ->add('lastname', TextType::class)
-            ->add('email', TextType::class)
-            ->add('message', TextareaType::class)
-            ->add('submit', SubmitType::class)
+            ->add('firstname', TextType::class, [
+                'label' => ' Votre prénom',
+                'attr' => [
+                    'placeholder' => 'Entrer votre prénom'
+                ]
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => ' Votre nom',
+                'attr' => [
+                    'placeholder' => 'Entrer votre nom'
+                ]
+            ])
+            ->add('email', TextType::class, [
+                'label' => ' Votre email',
+                'attr' => [
+                    'placeholder' => 'Entrer votre email'
+                ]
+            ])
+            ->add('message', TextareaType::class, [
+                'label' => ' Votre message',
+                'attr' => [
+                    'placeholder' => 'Entrer votre message'
+                ]
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Envoyer', 
+                'attr' => [
+                    'class' => 'btn btn-success'
+                ]
+            ]) 
             ->add('idPoduct', HiddenType::class)
        
         ;
